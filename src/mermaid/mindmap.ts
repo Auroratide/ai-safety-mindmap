@@ -1,13 +1,10 @@
-import { NodeTree } from "../node-tree"
+import { forEachNode, NodeTree } from "../node-tree"
 
 export function buildMermaidMindmap(tree: NodeTree): string {
-	return "mindmap" + addNode(1, tree)
-}
+	let result = "mindmap"
+	forEachNode(tree, (node, depth) => {
+		result += "\n" + "\t".repeat(depth + 1) + `${node.id}[${node.content.attributes.title}]` + "\n" + "\t".repeat(depth + 1) + `:::${node.id}`
+	})
 
-// recursive
-function addNode(depth: number, node: NodeTree): string {
-	const thisNode = "\n" + "\t".repeat(depth) + `${node.id}[${node.content.attributes.title}]` + "\n" + "\t".repeat(depth) + `:::${node.id}`
-	const childNodes = Object.values(node.children).map((child) => addNode(depth + 1, child)).join("")
-
-	return thisNode + childNodes
+	return result
 }
