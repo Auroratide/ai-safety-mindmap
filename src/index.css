@@ -1,0 +1,134 @@
+@import url("/fonts/urbanist/font-face.css");
+@import url("/fonts/sono/font-face.css");
+
+*, *::before, *::after {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+:root {
+	--c-blue-dark: oklch(55% 0.119 250);
+	--c-blue-light: oklch(64% 0.142 250);
+	--c-purple-dark: oklch(53% 0.11 304);
+	--c-purple-light: oklch(64% 0.13 305);
+	--c-yellow-dark: oklch(56.5% 0.11 95.5);
+	--c-yellow-light: oklch(71% 0.14 96);
+	--c-green-dark: oklch(55% 0.111 134);
+	--c-green-light: oklch(66% 0.129 134);
+	--c-red-dark: oklch(50% 0.11 30);
+	--c-red-light: oklch(63% 0.13 30.5);
+	--c-dark-dark: oklch(22% 0.021 255);
+	--c-dark-light: oklch(27% 0.02 255);
+	--c-light-dark: oklch(80% 0.005 255);
+	--c-light-light: oklch(97.5% 0.005 255);
+
+	--f-normal: "Urbanist", sans-serif;
+	--f-code: "Sono", monospace;
+}
+
+body {
+	font-family: var(--f-normal);
+	font-size: clamp(1rem, 2vw, 1.333rem);
+	background-color: var(--c-dark-dark);
+	color: var(--c-light-dark);
+	padding: 1em;
+}
+
+h1 {
+	font-size: 2.5em;
+	text-align: center;
+	margin-block-end: 1em;
+}
+
+#diagram {
+	text-align: center;
+}
+
+dialog {
+	position: fixed;
+	inset: 50%;
+	transform: translate(-50%, -50%);
+	border: 0.25em solid var(--c-purple-dark);
+	background: var(--c-dark-light);
+	color: var(--c-light-dark);
+	inline-size: min(95dvw, 35em);
+	padding: 0.75em;
+	gap: 1em;
+
+	header {
+		font-size: 1.125em;
+		font-weight: bold;
+		display: flex;
+		flex-direction: row-reverse;
+		gap: 0.25em;
+		margin-block-end: 0.75em;
+
+		p { flex: 1; }
+
+		button {
+			all: unset;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			line-height: 1;
+			font-size: 1.5em;
+			inline-size: 1em;
+			block-size: 1em;
+			cursor: pointer;
+			margin: -0.25em -0.25em 0 0;
+			padding: 0;
+			font-weight: normal;
+
+			&:hover, &:focus {
+				color: var(--c-light-light);
+			}
+		}
+	}
+
+	&::backdrop {
+		background: oklch(0% 0 0 / 0.5);
+	}
+}
+
+/* Mindmap Theme
+ * ************************************************************************* */
+#diagram-svg {
+	.section-root :is(rect, path, circle, polygon) {
+		fill: var(--c-blue-dark) !important;
+		stroke: var(--c-blue-light) !important;
+		stroke-width: 4;
+	}
+
+	text {
+		fill: var(--c-light-light) !important;
+		font-family: var(--f-normal);
+	}
+
+	.mindmap-node {
+		cursor: pointer;
+	}
+
+	.section-0 :is(rect, path, circle, polygon) {
+		fill: var(--c-red-dark) !important;
+		stroke: var(--c-red-light) !important;
+		stroke-width: 4;
+	} .section-edge-0 {
+		stroke: var(--c-red-light) !important;
+	}
+
+	.section-1 :is(rect, path, circle, polygon) {
+		fill: var(--c-green-dark) !important;
+		stroke: var(--c-green-light) !important;
+		stroke-width: 4;
+	} .section-edge-1 {
+		stroke: var(--c-green-light) !important;
+	}
+
+	.section-2 :is(rect, path, circle, polygon) {
+		fill: var(--c-yellow-dark) !important;
+		stroke: var(--c-yellow-light) !important;
+		stroke-width: 4;
+	} .section-edge-2 {
+		stroke: var(--c-yellow-light) !important;
+	}
+}

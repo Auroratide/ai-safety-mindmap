@@ -2,7 +2,7 @@ import Mermaid from "mermaid"
 import { getMindMapModules } from "./mindmap"
 import { buildNodeTree, forEachNode } from "./node-tree"
 import { buildMermaidMindmap } from "./mermaid"
-import { renderNode, showDialog } from "./dialog"
+import { showDialog } from "./dialog"
 
 const modules = getMindMapModules()
 const tree = buildNodeTree(modules)
@@ -16,8 +16,12 @@ if (diagramElem != null) {
 		forEachNode(tree, (node) => {
 			const elem = document.querySelector(`.${node.id}`)
 			elem?.addEventListener("click", () => {
-				showDialog(renderNode(node))
+				showDialog(node)
 			})
+
+			// TODO: make tabbable and accessible
+			// elem?.setAttribute("tabindex", "0")
+			// elem?.setAttribute("role", "button")
 		})
 	})
 }
