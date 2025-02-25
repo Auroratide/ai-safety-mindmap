@@ -3,6 +3,7 @@ import { getMindMapModules } from "./mindmap"
 import { buildNodeTree, forEachNode } from "./node-tree"
 import { buildMermaidMindmap } from "./mermaid"
 import { showDialog } from "./dialog"
+import { setTransformProperty } from "./mermaid/transform"
 
 const modules = getMindMapModules()
 const tree = buildNodeTree(modules)
@@ -15,7 +16,7 @@ if (diagramElem != null) {
 		diagramElem.innerHTML = result.svg
 		forEachNode(tree, (node) => {
 			const elem = document.querySelector(`.${node.id}`)
-			elem?.addEventListener("click", () => {
+			elem?.addEventListener("pointerdown", () => {
 				showDialog(node)
 			})
 
@@ -23,5 +24,7 @@ if (diagramElem != null) {
 			// elem?.setAttribute("tabindex", "0")
 			// elem?.setAttribute("role", "button")
 		})
+
+		diagramElem.querySelectorAll<SVGElement>(".mindmap-node").forEach(setTransformProperty)
 	})
 }
