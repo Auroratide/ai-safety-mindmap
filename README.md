@@ -6,7 +6,7 @@ A mindmap diagram of AI Safety research.
 
 - [x] Basic diagram
 - [x] Year/month of publish on research nodes
-- [ ] Show info on article nodes
+- [x] Show info on article nodes
 - [ ] Icon for nodes with external links
 - [ ] Change node shapes based on node type (root, category, article?)
 - [ ] Accessible nodes

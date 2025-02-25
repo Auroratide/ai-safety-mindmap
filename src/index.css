@@ -44,6 +44,20 @@ p {
 	line-height: 1.5em;
 }
 
+a {
+	color: var(--c-blue-light);
+	text-decoration: underline;
+
+	&:hover, &:focus {
+		text-decoration: none;
+		filter: brightness(1.25)
+	}
+
+	&:visited {
+		color: var(--c-purple-light);
+	}
+}
+
 #diagram {
 	text-align: center;
 }
@@ -94,6 +108,22 @@ dialog {
 
 	&::backdrop {
 		background: oklch(0% 0 0 / 0.5);
+	}
+}
+
+dl {
+	font-size: 0.875em;
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 0.25em;
+	margin-block-end: 1em;
+
+	dt {
+		font-weight: bold;
+
+		&::after {
+			content: ":";
+		}
 	}
 }
 
