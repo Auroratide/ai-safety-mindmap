@@ -2,7 +2,7 @@ import Mermaid from "mermaid"
 import { getMindMapModules } from "./mindmap"
 import { buildNodeTree, forEachNode } from "./node-tree"
 import { buildMermaidMindmap } from "./mermaid"
-import { showDialog } from "./dialog"
+import { showDialog, hideDialogOnBackdrop } from "./dialog"
 import { setTransformProperty } from "./mermaid/transform"
 import { makeSvgClickable } from "./mermaid/interaction"
 
@@ -23,3 +23,5 @@ if (diagramElem != null) {
 		diagramElem.querySelectorAll<SVGElement>(".mindmap-node").forEach(setTransformProperty)
 	})
 }
+
+hideDialogOnBackdrop()

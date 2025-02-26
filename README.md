@@ -8,7 +8,7 @@ A mindmap diagram of AI Safety research.
 - [x] Year/month of publish on research nodes
 - [x] Show info on article nodes
 - [x] Accessible nodes
-- [ ] Clickable backdrop
+- [x] Clickable backdrop
 - [ ] Dialog transitions
 - [ ] Diagram sizing and positioning
 - [ ] Icon for nodes with external links
